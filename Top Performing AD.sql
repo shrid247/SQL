@@ -1,0 +1,17 @@
+DROP  TABLE IF EXISTS Ads;
+CREATE  TABLE Ads(
+    adid serial,
+    VIEWS INT,
+    Clicks INT,
+    COST DECIMAL(10,2)
+);
+
+INSERT INTO Ads(VIEWS, Clicks, COST)
+VALUES
+    (1000,50,20.5),
+    (800,30,15.2),
+    (1200,80,25.7),
+    (600,20,10.9),
+    (1500,120,40.3);
+SELECT *,TO_CHAR((clicks::NUMERIC / VIEWS) * 100, 'FM999.9%') AS "CTR" FROM Ads
+ORDER BY VIEWS DESC
